@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "00185591-fb56-479c-8ec8-69d987519a97",
+		"name": "Knowledge Microservice API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46377799",
+		"_collection_link": "https://rajveerpratrapsingh.postman.co/workspace/f844686d-9194-4aa7-873a-10bf8fae147b/collection/46377799-00185591-fb56-479c-8ec8-69d987519a97?action=share&source=collection_link&creator=46377799"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Knowledge",
+			"item": [
+				{
+					"name": "Get All Knowledge",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/knowledge/get-all-knowledge?page=0&size=20&sort=id,desc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"knowledge",
+								"get-all-knowledge"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "type",
+									"value": "TEXT",
+									"disabled": true
+								},
+								{
+									"key": "query",
+									"value": "search term",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "id,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Knowledge By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/knowledge/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"knowledge",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Text Knowledge",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"TEXT\",\n    \"title\": \"My First Note\",\n    \"content\": \"This is a simple text note to test the API.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/knowledge/create-knowledge",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"knowledge",
+								"create-knowledge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Link Knowledge",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"LINK\",\n    \"title\": \"Sample Link Knowledge\",\n    \"url\": \"https://example.com\",\n    \"description\": \"A link to an example website\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/knowledge/create-knowledge",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"knowledge",
+								"create-knowledge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Knowledge",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzUxMiJ9.eyJlbXBJZCI6dHJ1ZSwicm9sZXMiOlsiVVNFUiJdLCJlbXBObyI6dHJ1ZSwidXNlcklkIjp0cnVlLCJ1c2VybmFtZSI6InVzZXIiLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNzY2NTA3NzgxLCJleHAiOjE3NjY1MzY1ODF9.bNurQBsyInPc6Vv78G8xofDuVSYgo1icusbW3FdxyCQ8OkMWCRwK8HAH1fvwFxRHP_Cw7hWtXkKgkgD9lOpcTzGKmYa8DCl7dMhoIZOaz_AOdnrFYXbrT5bjoGLRAsC0kT9DAItsYTzFN3Ts4Wb_c3riZ4iR6tuHOcvb3dD7mjsa6HNQAZHVyr6jcUYJfWvtr3SKTsDLZgYZZebIGp3jeq8uyye9tZoTRqZyW94Lbk0YNyEljCIWFB0hU6_gaBeKG1csTgOtECZzodHxVrESZEq2tERFJEY4ap5Rcm_WKgznETZskeiUTw4Ipr22KRc8XH2sop2YfFLAhPzwP3d-Zg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"type\": \"TEXT\",\n    \"title\": \"Updated Text Knowledge\",\n    \"content\": \"This is the updated content.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/knowledge/update-knowledge",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"knowledge",
+								"update-knowledge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Knowledge",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/knowledge/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"knowledge",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5004/knowledge-service"
+		},
+		{
+			"key": "auth_token",
+			"value": ""
+		}
+	]
+}
