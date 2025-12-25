@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class NestedKnowledge extends Knowledge {
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     @JoinTable(
             name = "knowledge_relations",
             joinColumns = @JoinColumn(name = "parent_id"),

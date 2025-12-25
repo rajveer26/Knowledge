@@ -76,5 +76,6 @@ public interface KnowledgeMapper {
     @Mapping(target = "updatedBy", ignore = true)
     @Mapping(target = "updationTimeStamp", ignore = true)
     @Mapping(target = "recordVersion", ignore = true)
+    @Mapping(target = "references", ignore = true)
     NestedKnowledge toEntity(NestedKnowledgeInput input);
 }

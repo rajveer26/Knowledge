@@ -25,6 +25,8 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok.version>1.18.34</lombok.version>
         <google-api-common.version>2.17.1</google-api-common.version>
+        <aws-sdk-secretsmanager.version>2.26.29</aws-sdk-secretsmanager.version>
+
 
     </properties>
 
@@ -34,6 +36,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- AWS Secrets Manager -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>secretsmanager</artifactId>
+            <version>${aws-sdk-secretsmanager.version}</version>
         </dependency>
 
         <!-- Google API -->

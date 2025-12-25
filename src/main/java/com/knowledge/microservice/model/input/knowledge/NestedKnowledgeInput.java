@@ -12,5 +12,5 @@ import java.util.List;
 public class NestedKnowledgeInput extends KnowledgeInput {
 
     @JsonProperty("references")
-    private List<KnowledgeInput> references = new LinkedList<>();
+    private List<Long> references = new LinkedList<>();
 }
